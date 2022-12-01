@@ -11,7 +11,7 @@ This project is a *vulnerable lab as a service* that provides users to create vu
 1. Beta version with vulnerabilities:
 2. Prod version with security mesuares fixed: 
 
-Docker run command:
+### Docker run command:
 
 ### Technologies used 
 1. PHP
