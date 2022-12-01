@@ -1,7 +1,7 @@
 # Project
 ## Secure programming for Web Project
 
-This project is a web service that provides users to create vulnerable services to practice penetration testing in a safe and temporary environment.
+This project is a web service that provides users to create vulnerable services with sollutions to practice penetration testing in a safe and temporary sandboxed environment.
 
 ### There are 2 versions,
 1. Beta version - Has few vulnerabilities, this is the first version of code base.
@@ -13,3 +13,7 @@ This project is a web service that provides users to create vulnerable services 
 
 Docker run command:
 
+### Technologies used 
+1. PHP
+2. C#
+3. Azure - for serverless and hosting.
