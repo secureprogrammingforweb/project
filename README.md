@@ -18,5 +18,5 @@ Docker run command:
 2. C#
 3. JAVA
 4. MySQL and sqlite for databases
-5. Azure - for hosting code in a VM, Azure functions(serverless)
+5. Azure - for hosting code in a VM, Azure functions(serverless), Azure REST API
 6. Dockers for vulnerable containers.
