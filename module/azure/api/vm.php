@@ -1,4 +1,5 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/common_functions.php';
 /*
 az vm create --resource-group 1-2ed9ccc1-playground-sandbox --name MyVM --image UbuntuLTS --admin-username 'gns' --admin-password 'Password123!' --location eastus
 */
@@ -44,7 +45,7 @@ function listAllVM(){
     }
 
 }
-function deleteVM($VMNAME){
+function deleteVM($VMNAME,$UserWhoTookAction){
     /*
     az resource update --resource-group myResourceGroup --name myVM --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach
     az vm delete --resource-group 1-527abd84-playground-sandbox --name myVM  --yes
