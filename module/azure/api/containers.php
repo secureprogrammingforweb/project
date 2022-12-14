@@ -19,7 +19,7 @@ function container_create($machine_name){
     // Get machine's repo name and openports
     $machine_name = "REPO"; //SRIKAR
     $ports = "80,8080,443"; //SRIKAR
-    $name = $USERNAME+"000"+$OS+"000"+random_str();
+    $name = $USERNAME+"000"+$machine_name+"000"+random_str();
     $command = "az container create --resource-group ".$RG_NAME." --name machine_".$name."  --image ".$machine_name." --ports ".$ports." --dns-name-label machine_".$unique." --location eastus" 
 }
 

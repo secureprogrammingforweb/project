@@ -11,5 +11,6 @@ $conn = new mysqli($servername, $username, $password,$database);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-// echo "Connected successfully";
+// CONFIG
+$RGNAME = "1-65cd8a9e-playground-sandbox";
 ?>
