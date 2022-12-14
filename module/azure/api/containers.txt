@@ -1,0 +1,218 @@
+<?php
+// Create containers
+// az container create --resource-group 1-55c84ee8-playground-sandbox --name mycontainer1  --image ubuntu/apache2 --ports 80 --dns-name-label apch21 --location eastus
+/*
+{
+  "containers": [
+    {
+      "command": null,
+      "environmentVariables": [],
+      "image": "cytopia/dvwa",
+      "instanceView": {
+        "currentState": {
+          "detailStatus": "CrashLoopBackOff: Back-off restarting failed",
+          "exitCode": null,
+          "finishTime": null,
+          "startTime": null,
+          "state": "Waiting"
+        },
+        "events": null,
+        "previousState": {
+          "detailStatus": "Error",
+          "exitCode": 1,
+          "finishTime": "2022-12-13T16:38:52.246000+00:00",
+          "startTime": "2022-12-13T16:38:51.761000+00:00",
+          "state": "Terminated"
+        },
+        "restartCount": 1
+      },
+      "livenessProbe": null,
+      "name": "mycontainer1",
+      "ports": [
+        {
+          "port": 80,
+          "protocol": "TCP"
+        }
+      ],
+      "readinessProbe": null,
+      "resources": {
+        "limits": null,
+        "requests": {
+          "cpu": 1.0,
+          "gpu": null,
+          "memoryInGb": 1.5
+        }
+      },
+      "volumeMounts": null
+    }
+  ],
+  "diagnostics": null,
+  "dnsConfig": null,
+  "encryptionProperties": null,
+  "id": "/subscriptions/964df7ca-3ba4-48b6-a695-1ed9db5723f8/resourceGroups/1-55c84ee8-playground-sandbox/providers/Microsoft.ContainerInstance/containerGroups/mycontainer1",
+  "identity": null,
+  "imageRegistryCredentials": null,
+  "initContainers": [],
+  "instanceView": {
+    "events": [],
+    "state": "Running"
+  },
+  "ipAddress": {
+    "dnsNameLabel": "lalalandone1",
+    "fqdn": "lalalandone1.eastus.azurecontainer.io",
+    "ip": "20.246.136.43",
+    "ports": [
+      {
+        "port": 80,
+        "protocol": "TCP"
+      }
+    ],
+    "type": "Public"
+  },
+  "location": "eastus",
+  "name": "mycontainer1",
+  "osType": "Linux",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "1-55c84ee8-playground-sandbox",
+  "restartPolicy": "Always",
+  "sku": "Standard",
+  "subnetIds": null,
+  "tags": {},
+  "type": "Microsoft.ContainerInstance/containerGroups",
+  "volumes": null,
+  "zones": null
+}
+*/
+
+// List containers
+// az container list
+/*
+[
+  {
+    "containers": [
+      {
+        "command": null,
+        "environmentVariables": [],
+        "image": "ubuntu/apache2",
+        "instanceView": null,
+        "livenessProbe": null,
+        "name": "mycontainer1",
+        "ports": [
+          {
+            "port": 80,
+            "protocol": "TCP"
+          }
+        ],
+        "readinessProbe": null,
+        "resources": {
+          "limits": null,
+          "requests": {
+            "cpu": 1.0,
+            "gpu": null,
+            "memoryInGb": 1.5
+          }
+        },
+        "volumeMounts": null
+      }
+    ],
+    "diagnostics": null,
+    "dnsConfig": null,
+    "encryptionProperties": null,
+    "id": "/subscriptions/964df7ca-3ba4-48b6-a695-1ed9db5723f8/resourceGroups/1-55c84ee8-playground-sandbox/providers/Microsoft.ContainerInstance/containerGroups/mycontainer1",
+    "identity": null,
+    "imageRegistryCredentials": null,
+    "initContainers": [],
+    "instanceView": null,
+    "ipAddress": {
+      "dnsNameLabel": "apch21",
+      "fqdn": "apch21.eastus.azurecontainer.io",
+      "ip": "20.246.136.43",
+      "ports": [
+        {
+          "port": 80,
+          "protocol": "TCP"
+        }
+      ],
+      "type": "Public"
+    },
+    "location": "eastus",
+    "name": "mycontainer1",
+    "osType": "Linux",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "1-55c84ee8-playground-sandbox",
+    "restartPolicy": "Always",
+    "sku": "Standard",
+    "subnetIds": null,
+    "tags": {},
+    "type": "Microsoft.ContainerInstance/containerGroups",
+    "volumes": null,
+    "zones": null
+  },
+  {
+    "containers": [
+      {
+        "command": null,
+        "environmentVariables": [],
+        "image": "ubuntu/apache2",
+        "instanceView": null,
+        "livenessProbe": null,
+        "name": "apache2container",
+        "ports": [
+          {
+            "port": 80,
+            "protocol": "TCP"
+          }
+        ],
+        "readinessProbe": null,
+        "resources": {
+          "limits": null,
+          "requests": {
+            "cpu": 1.0,
+            "gpu": null,
+            "memoryInGb": 1.5
+          }
+        },
+        "volumeMounts": null
+      }
+    ],
+    "diagnostics": null,
+    "dnsConfig": null,
+    "encryptionProperties": null,
+    "id": "/subscriptions/964df7ca-3ba4-48b6-a695-1ed9db5723f8/resourceGroups/1-55c84ee8-playground-sandbox/providers/Microsoft.ContainerInstance/containerGroups/apache2container",
+    "identity": null,
+    "imageRegistryCredentials": null,
+    "initContainers": [],
+    "instanceView": null,
+    "ipAddress": {
+      "dnsNameLabel": null,
+      "fqdn": null,
+      "ip": "52.189.83.0",
+      "ports": [
+        {
+          "port": 80,
+          "protocol": "TCP"
+        }
+      ],
+      "type": "Public"
+    },
+    "location": "centralus",
+    "name": "apache2container",
+    "osType": "Linux",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "1-55c84ee8-playground-sandbox",
+    "restartPolicy": "OnFailure",
+    "sku": "Standard",
+    "subnetIds": null,
+    "tags": {},
+    "type": "Microsoft.ContainerInstance/containerGroups",
+    "volumes": null,
+    "zones": null
+  }
+]
+*/
+
+// Delete containers
+// az container delete --name apache2container --resource-group 1-55c84ee8-playground-sandbox --yes
+// check if op has "provisioningState": "Succeeded"
+
+?>

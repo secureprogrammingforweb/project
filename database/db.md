@@ -12,3 +12,9 @@ insert into auth values('john','John123');
 
 ### First auth -> returns 1 if True and 0 if false
 select * from auth where username="john" and password="John123";
+
+### Craete rbac table with student,contributer,admin assigned to a username
+
+### Create a database with machineNames, repoURL,Ports to be opened
+
+### Create a database with username and machine running by user

@@ -1,6 +1,5 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-include $_SERVER["DOCUMENT_ROOT"].'/project/module/sessionmgr.php';
 
 # If GET - show login page
 if ($_SERVER['REQUEST_METHOD'] == "GET"){ ?>
@@ -20,9 +19,12 @@ if (mysqli_fetch_array($conn->query($query)) == NULL){
 	}
 else {
 		session_start();
-		$_SESSION['name']="JACK";
+		$_SESSION['name']=$_POST["username"];
+		$query = 'select role from rbac where username="'.$_POST["username"].'";';
+		// GET role of user
+		$_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
+
 		header("Location: http://localhost/project/page/dashboard.php");
-		//var_dump($_SESSION['name']);
 	}
 }
 ?>
