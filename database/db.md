@@ -23,7 +23,7 @@ ALTER TABLE `machines_db` ADD PRIMARY KEY(`id`);
 INSERT INTO `machines_db` (`id`, `machine_name`, `machine_url`, `machine_disc`, `machine_logo_url`) VALUES ('1', 'dvwa', 'vulnerable/dvwa', 'DVWA is a machine1 ', 'https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png'), ('2', 'Apache2', 'apache/apache2', 'Machine2 Disc is apache2', 'https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png');
 
 ### Running machines
-CREATE TABLE `project`.`running_machines` (`id` INT NOT NULL , `user` VARCHAR(100) NOT NULL , `machine_name` VARCHAR(100) NOT NULL , `time` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `project`.`running_machines` (`id` INT NOT NULL , `user` VARCHAR(100) NOT NULL , `machine_name` VARCHAR(100) NOT NULL , `time` VARCHAR(100) NOT NULL ,`url` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;
 ALTER TABLE `running_machines` ADD PRIMARY KEY(`id`);
 
 ### Database VMS running and who runned it
