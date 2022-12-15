@@ -1,6 +1,19 @@
 <?php
-// include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
+include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 session_start();
+
+function getLastRunOrRunning($conn){
+    $query = 'SELECT time FROM running_machines where user="'.$_SESSION['name'].'"';
+    $abcd = $conn->query($query);
+    $time = mysqli_fetch_array($conn->query($query));
+    // 3600
+    if (time() - intval($time["time"]) > 3600){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 if (isset($_SESSION['name'])){
 }
 
@@ -36,7 +49,15 @@ a {
 </style>
 </head>
 <body>
-
+<?php
+// Check if machine is running or last run machine
+if (getLastRunOrRunning($conn)){
+        $option = "Start machine";
+    }
+else {
+        $option = "Re-run machine";
+}
+?>
 <div class="last-played-container">
 
         <div class="grid-item">
@@ -48,7 +69,7 @@ a {
             </div>
             <a href="/project/page/machine_homepage.php?name=lastplayedmachine">
                 <button type="button" >
-                    <i></i> Start
+                    <i></i> <?php echo $option;?>
                 </button>
             </a>
         </div>

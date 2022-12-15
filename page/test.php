@@ -27,7 +27,8 @@ $RG_NAME = "1-65cd8a9e-playground-sandbox";
 //     echo "<br>";
 // }
 // create_vm("NAME1","WindowsVM","GNS",$RG_NAME,$conn);
-$query = 'select role from rbac where username="1";';
-$op = mysqli_fetch_array($conn->query($query))["role"];
-var_dump($op);
+    $abcd = "1";
+    $query = 'SELECT time FROM running_machines where user="'.$abcd.'"';
+    $time = mysqli_fetch_array($conn->query($query));
+    var_dump($time["time"]);
 ?>

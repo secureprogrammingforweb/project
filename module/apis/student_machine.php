@@ -34,21 +34,23 @@ function isStudentAllowedToStartMachine($StudnetName){
 session_start();
 $MachineORVMname = $GET["MachineOrVMname"];
 if ($MachineORVMname == "WindowsVM" || $MachineORVMname == "LinuxVM"){
-    if(isStudentAllowedToStartVM($_SESSION['username'])){
+    if(isStudentAllowedToStartVM($_SESSION['name'])){
         echo "Your VM will be starting in a minute";
-        create_vm($VMNAME,$GET["MachineOrVMname"],$_SESSION['username'])
+        create_vm($VMNAME,$GET["MachineOrVMname"],$_SESSION['name'])
     }
     else {
         echo "Please stop your old VM";
     }
 }
 else{
-    if(isStudentAllowedToStartMachine($_SESSION['username'])){
+    if(isStudentAllowedToStartMachine($_SESSION['name'])){
         echo "Your machine will be starting in a minute";
     }
     else {
         echo "Please stop your old Machine";
     }
 }
+
+echo "IP : dkjlsadjlsaldk"
 
 ?>

@@ -13,6 +13,7 @@ if(isset($_GET["name"])){
     echo $machine_data["machine_name"];
     echo "<br>Logo: ".$machine_data['machine_logo_url'];
     // BUTTON HERE
+    ?><button onclick="____START___MACHINE"> <?php
     echo "<br>Machine notes: ".$machine_data["machine_disc"];
 }
 ?>
