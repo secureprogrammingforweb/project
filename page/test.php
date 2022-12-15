@@ -27,8 +27,7 @@ $RG_NAME = "1-65cd8a9e-playground-sandbox";
 //     echo "<br>";
 // }
 // create_vm("NAME1","WindowsVM","GNS",$RG_NAME,$conn);
-    $abcd = "1";
-    $query = 'SELECT time FROM running_machines where user="'.$abcd.'"';
-    $time = mysqli_fetch_array($conn->query($query));
-    var_dump($time["time"]);
+$target_file = $target_dir . basename($_FILES["name"]["name"]);
+var_dump($_FILES["name"]);
+
 ?>
