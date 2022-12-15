@@ -29,3 +29,6 @@ ALTER TABLE `running_machines` ADD PRIMARY KEY(`id`);
 ### Database VMS running and who runned it
 CREATE TABLE `project`.`running_vms` (`username` VARCHAR(100) NOT NULL , `os` VARCHAR(100) NOT NULL , `ip` VARCHAR(100) NOT NULL , `username` VARCHAR(100) NOT NULL , `password` VARCHAR(100) NOT NULL,`time` VARCHAR(10) NOT NULL ) 
 
+### Support tickets
+CREATE TABLE `project`.`support` (`id` INT NOT NULL , `user` VARCHAR(100) NOT NULL , `question` VARCHAR(100) NOT NULL , `answer` VARCHAR(100) NOT NULL )
+ALTER TABLE `support` ADD PRIMARY KEY(`id`);
