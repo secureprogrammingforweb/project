@@ -12,5 +12,5 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 // CONFIG
-$RGNAME = "1-65cd8a9e-playground-sandbox";
+$RG_NAME = "1-65cd8a9e-playground-sandbox";
 ?>

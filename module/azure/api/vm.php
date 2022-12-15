@@ -1,10 +1,18 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/common_functions.php';
+
 /*
 az vm create --resource-group 1-2ed9ccc1-playground-sandbox --name MyVM --image UbuntuLTS --admin-username 'gns' --admin-password 'Password123!' --location eastus
 */
 
-function create_vm($VMNAME,$OS,$USER_WHO_CREATED){
+function getVMIP($VMNAME,$RG_NAME){
+    return mt_rand(0, 255) . "." . mt_rand(0, 255) . "." . mt_rand(0, 255) . "." . mt_rand(0, 255);
+    #return system("az vm show -d -g ".$RG_NAME." -n ".$VMNAME." --query publicIps -o tsv");
+}
+
+function create_vm($VMNAME,$OS,$USER_WHO_CREATED,$RG_NAME,$conn){
+    include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
+
     //Create windows10 Ubuntu or WindowsServer`
     /*
         {
@@ -19,22 +27,23 @@ function create_vm($VMNAME,$OS,$USER_WHO_CREATED){
             "zones": ""
         }
     */ 
-    if ($OS == "windows"){
+    if ($OS == "WindowsVM"){
         $OS = "win2016datacenter";    
     }
-    if ($OS == "linux"){
+    if ($OS == "LinuxVM"){
         $OS = "UbuntuLTS";    
     }
     // $OS = "UbuntuLTS","win2016datacenter";
-    $VM_NAME = $USERNAME+"000"+$OS+"000"+random_str();
-    $command = "az vm create --resource-group ".$RG_NAME." --name ".$VM_NAME." --image ".$OS." --admin-username '".$USERNAME."' --admin-password '".$PASSWORD."' --location eastus" 
-    // UPDATE DB with username, and VM name, IP, username, password 
-    $IP = getVMIP($VMNAME)
+    $USERNAME = random_str();
+    $PASSWORD = random_str();
+    $VM_NAME = $USERNAME."000".$OS;
+    $command = "az vm create --resource-group ".$RG_NAME." --name ".$VM_NAME." --image ".$OS." --admin-username '".$USERNAME."' --admin-password '".$PASSWORD."' --location eastus";
+    $IP = getVMIP($VM_NAME,$RG_NAME);
+    // UPDATE DB with username, and VM name, IP, username, password
+    $query = "insert into running_vms values('".$USER_WHO_CREATED."','".$OS."' ,'".$IP."' ,'".$USERNAME."','".$PASSWORD."','".strval(time())."')";
+    $val = $conn->query($query);
 }
 
-function getVMIP($VMNAME){
-    return "az vm show -d -g ".$RG_NAME." -n ".$VMNAME." --query publicIps -o tsv";
-}
 
 function listAllVM(){
     $command = "az vm list";
@@ -50,7 +59,7 @@ function deleteVM($VMNAME,$UserWhoTookAction){
     az resource update --resource-group myResourceGroup --name myVM --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach
     az vm delete --resource-group 1-527abd84-playground-sandbox --name myVM  --yes
     */
-    shell_exec("az resource update --resource-group ".$RG_NAME." --name ".$VMNAME." --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach")
-    shell_exec("az vm delete --resource-group ".$RG_NAME." --name ".$VMNAME." --yes")
+    shell_exec("az resource update --resource-group ".$RG_NAME." --name ".$VMNAME." --resource-type virtualMachines --namespace Microsoft.Compute --set properties.storageProfile.osDisk.deleteOption=detach");
+    shell_exec("az vm delete --resource-group ".$RG_NAME." --name ".$VMNAME." --yes");
 }
 ?>

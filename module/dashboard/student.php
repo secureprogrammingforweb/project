@@ -2,16 +2,6 @@
 // include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 session_start();
 if (isset($_SESSION['name'])){
-    #echo ("Welcome ".$_SESSION['name']);
-    if ($_SESSION['name'] == "admin"){
-        include $_SERVER["DOCUMENT_ROOT"].'/project/module/dashboard/admin.php';
-    }
-    if ($_SESSION['name'] == "contributer"){
-        include $_SERVER["DOCUMENT_ROOT"].'/project/module/dashboard/contrbuter.php';
-    }
-    if ($_SESSION['name'] == "student"){
-        include $_SERVER["DOCUMENT_ROOT"].'/project/module/dashboard/student.php';
-    }
 }
 
 else{
@@ -76,10 +66,10 @@ a {
                 <img style="width:145px;" src="https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png"></img>
                 <div>
                     <h3 class="card-title text-truncate">
-                        <?php echo $row['machinename']; ?>
+                        <?php echo $row['machine_name']; ?>
                     </h3>
                 </div>
-                <a href="/project/page/machine_homepage.php?name=<?php echo $row['machinename']; ?>">
+                <a href="/project/page/machine_homepage.php?name=<?php echo $row['machine_name']; ?>">
                     <button type="button" >
                     <i></i> Start</button>
                 </a>
