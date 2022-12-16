@@ -1,6 +1,5 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-session_start();
 
 function getLastRunOrRunning($conn){
     $query = 'SELECT time FROM running_machines where user="'.$_SESSION['name'].'"';
@@ -68,7 +67,7 @@ else {
                 </h3>
             </div>
             <a href="/project/page/machine_homepage.php?name=lastplayedmachine">
-                <button type="button" >
+                <button type="button" class='btn btn-dark' >
                     <i></i> <?php echo $option;?>
                 </button>
             </a>
@@ -76,29 +75,28 @@ else {
 </div>
 
 
-<div class="list-container">
     <?php
         include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
         $readSql = "SELECT * FROM machines_db";
-        $result = mysqli_query($conn, $readSql);
-        while($row = mysqli_fetch_array($result)) { ?>
+        $result = mysqli_query($conn, $readSql); ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-            <div class="grid-item">
-                <img style="width:145px;" src="https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png"></img>
-                <div>
-                    <h3 class="card-title text-truncate">
-                        <?php echo $row['machine_name']; ?>
-                    </h3>
-                </div>
-                <a href="/project/page/machine_homepage.php?name=<?php echo $row['machine_name']; ?>">
-                    <button type="button" >
-                    <i></i> Start</button>
-                </a>
-            </div>
-        <?php
-        }
-    ?>  
-</div>
+        <table class="table table-striped table-hover" style="margin-left:25%;width:50%;">
+        <?php while($row = mysqli_fetch_array($result)) { 
+
+            echo "<tr>".
+            "<td>" . "<div><img style='width:145px;'" . "src="."'https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png'></img>"
+            .$row["machine_name"].
+            "</div></td>".
+            "<td>". "<a href=". "'/project/page/machine_homepage.php?name='".$row['machine_name'] . "'>".
+                "<button class='btn btn-dark' type=". "button". ">".
+                "<i></i> Start</button>".
+                "</a>". "</td>".   
+            "</tr>"; }?>
+        </table>
+
+
+
 
 </body>
 </html>

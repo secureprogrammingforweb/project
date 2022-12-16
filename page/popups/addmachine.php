@@ -1,4 +1,10 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
+?>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<?php
 /*
 Table
  -----------------------------
@@ -7,9 +13,8 @@ Table
 BOX | Box | button | Box |
 [Add button] 
  */
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
 $target_dir = "../../uploads/";
-echo $target_dir;
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
 $target_file = $target_dir . basename($_FILES["logo"]["name"]);
 $uploadOk = 1;
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -56,16 +61,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         echo "Error: ". $_FILES["logo"]["error"];
     }
-}
-$query = "insert into machines_db values('".$_POST["name"]."','".$_POST["repo_url"]."','http://localhost/project/uploads".$_FILES["logo"]["name"]."','".$_POST["disc"]."');";
+$query = "insert into machines_db(machine_name, machine_url, machine_disc, machine_logo_url) values('".$_POST["name"]."','".$_POST["repo_url"]."','http://localhost/project/uploads".$_FILES["logo"]["name"]."','".$_POST["disc"]."');";
 mysqli_query($conn, $query);
-// SRIKAR test
+}// SRIKAR test
 ?>
 
-<form action="/project/page/popups/addmachine.php" method="post" enctype="multipart/form-data">
-Name: <input type="text" name="name"><br>
-Repo_URL: <input type="text" name="repo_url"><br>
-Logo: <input type="file" name="logo" id="logo"><br>
-Disc: <input type="text" name="disc"><br>
-<input type="submit">
-</form>
+

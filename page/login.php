@@ -24,7 +24,8 @@ else {
 		// GET role of user
 		$_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
 
-		header("Location: http://localhost/project/page/dashboard.php");
+		//header("Location: http://localhost/project/page/dashboard.php");
+		header("Location: http://localhost/project/page/dashboard-gui.php");
 	}
 }
 ?>
