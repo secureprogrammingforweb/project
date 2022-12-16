@@ -85,7 +85,7 @@ else {
         <?php while($row = mysqli_fetch_array($result)) { 
 
             echo "<tr>".
-            "<td>" . "<div><img style='width:145px;'" . "src="."'https://storage.googleapis.com/attackdefense-public.appspot.com/cve/cve-2020/2405.png'></img>"
+            "<td>" . "<div><img style='width:145px;'" . "src="."'https://cdn-icons-png.flaticon.com/512/59/59505.png'></img>"
             .$row["machine_name"].
             "</div></td>".
             "<td>". "<a href=". "'/project/page/machine_homepage.php?name='".$row['machine_name'] . "'>".

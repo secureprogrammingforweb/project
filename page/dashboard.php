@@ -3,6 +3,7 @@
 //session_start();
 include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/login.php';
+ini_set('display_errors','Off'); ini_set('error_reporting', E_ALL ); define('WP_DEBUG', false); define('WP_DEBUG_DISPLAY', false); 
 if (isset($_SESSION['name'])){
     echo ("Welcome ".$_SESSION['name']);
     if ($_SESSION['role'] == "admin"){
