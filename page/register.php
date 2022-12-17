@@ -94,9 +94,15 @@
                 type="password"
 
                 class="form-control form-control-lg"
+
                 />
+
                 <label class="form-label" for="confirmPasswordX">Confirm Password</label>
+
                 </div>
+
+
+
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">
 
                   Register
@@ -105,23 +111,33 @@
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['password'] != $_POST["confirmPassword"]){
                     echo "<h3>". "Provided passwords are not the same" ."</h3>";
-                }
 
-                   /* if($_POST['password'] != $_POST["confirmPassword"]){
-                            echo "<h3>". "Provided passwords are not the same" ."</h3>";
-                    }*/
-                if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['password'] == $_POST["confirmPassword"]){
-                        include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-                        $query = "insert into auth values('".$_POST["username"]."','".$_POST["password"]."')";
-                        mysqli_query($conn,$query);
-                        header("Location: http://localhost/project/page/login.php");
+                }
+                else{
+                    include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
+                    $username = $conn-> real_escape_string($_POST['username']);
+                    $password = $conn-> real_escape_string($_POST['password']);
+                    $email = $conn -> real_escape_string($_POST['password']);
+                    $query = "insert into auth values('".$username."','".$password."')";
+                    mysqli_query($conn,$query);
+
                     }
+                
+
                 ?>
+
               </div>
+
             </form>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>

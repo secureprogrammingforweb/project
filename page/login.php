@@ -7,8 +7,10 @@ $password = true;
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
+	$username = $conn-> real_escape_string($_POST['username']);
+	$password = $conn-> real_escape_string($_POST['password']);
 
-    $query = 'select * from auth where username="'.$_POST["username"].'" and password="'.$_POST["password"].'";';
+    $query = 'select * from auth where username="'.$username.'" and password="'.$password.'";';
 
     if (mysqli_fetch_array($conn->query($query)) == NULL){
 
@@ -22,15 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
         session_start();
 
-        $_SESSION['name']=$_POST["username"];
+        $_SESSION['name']=$username;
 
-        $query = 'select role from rbac where username="'.$_POST["username"].'";';
+        $query = 'select role from rbac where username="'.$username.'";';
 
         // GET role of user
 
         $_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
-
-   
 
         header("Location: http://localhost/project/page/dashboard.php");
 
