@@ -24,6 +24,12 @@ include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_SESSION['name'])){
+$query = "insert into support(user, question, answer) values('".$_SESSION["name"]."','".$_POST["question"]."','In review.');";
+mysqli_query($conn, $query);
+}
+?>
 
 <?php
 if ($_SESSION["role"] == "student" || $_SESSION["role"] == "contributor"){
@@ -55,4 +61,18 @@ while($row = mysqli_fetch_array($result)) {
     echo "</tr>"; 
 }
 echo "</table>";
+
 ?>
+<!DOCTYPE html>
+<html>
+<body>
+<form action="support.php" method="post">
+<center><p><label for="question">Post Your Question:</label></p></center>
+  <center><textarea id="question" name="question" rows="4" cols="50"></textarea></center>
+  <br>
+  <center><input type="submit" class='btn btn-dark' value="Submit"></center>
+</form>
+</body>
+</html>
+</body>
+</html>

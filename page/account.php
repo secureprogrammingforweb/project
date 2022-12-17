@@ -6,6 +6,13 @@
 include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 
+  
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    //include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
+    $query = "UPDATE auth SET username = '". $_POST["username"]. "WHERE username = '". $_SESSION['name'] ."'";
+    mysqli_query($conn, $query);
+	header("Location: http://localhost/project/page/dashboard.php");
+}
 
 echo "<table class='table table-striped table-hover' style='margin-left:25%;width:50%;'>".
 "<tr>".
@@ -35,8 +42,8 @@ $users = mysqli_query($conn,$query);
         <div class="modal-body">
               <?php
                 echo "<form action='/project/page/account.php' method='post'>".
-                 "User Name:"."<input type='text' class='form-control form-control-sm' placeholder='name' name='username'>";
-                "<input class='btn btn-dark' type='submit'> </form>"; ?>
+                 "User Name:"."<input type='text' class='form-control form-control-sm' placeholder='name' name='username'>".
+                 "<input class='btn btn-dark' type='submit'> </form>"; ?>
             
         </div>
  
@@ -47,13 +54,5 @@ $users = mysqli_query($conn,$query);
       
     </div>
 </div>
-<?php  
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    //include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
-    $query = "UPDATE auth SET username = '". $_POST["username"]. "WHERE username = '". $_SESSION['name'] ."'";
-    mysqli_query($conn, $query);
-	header("Location: http://localhost/project/page/dashboard.php");
-}
-?>
 
    
