@@ -25,9 +25,14 @@ include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 ?>
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_SESSION['name'])){
-$query = "insert into support(user, question, answer) values('".$_SESSION["name"]."','".$_POST["question"]."','In review.');";
-mysqli_query($conn, $query);
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_SESSION['name']) ){
+    if ($_SESSION['role'] !="admin"){ 
+        $query = "insert into support(user, question, answer) values('".$_SESSION["name"]."','".$_POST["question"]."','In review.');";
+    }
+    else {
+        $query = "update " ;
+    }
+        mysqli_query($conn, $query);
 }
 ?>
 
@@ -61,7 +66,7 @@ while($row = mysqli_fetch_array($result)) {
     echo "</tr>"; 
 }
 echo "</table>";
-
+if ($_SESSION['role'] != "admin"){
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,3 +81,4 @@ echo "</table>";
 </html>
 </body>
 </html>
+<?php }?>
