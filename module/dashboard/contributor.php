@@ -3,6 +3,8 @@
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/azure/api/vm.php';
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +49,11 @@ $machines = mysqli_query($conn,$query); ?>
 <?php while($row = mysqli_fetch_array($machines)){
   echo "<tr>".
     "<td>".$row["machine_name"]. "</td>".   
-    "<td>". "<button type='button' class='btn btn-dark' >"."Edit". "</button>". "</td>".   
+    "<td>". "<button value='editmachine' style='margin-left:25%;' class='btn btn-info btn-lg' data-toggle='modal' data-target='#editModal' type='button' class='btn btn-dark' >"."Edit". "</button>". "</td>".   
     "</tr>"; 
 }?>
 </table>
+
 <button value="addmachine" style="margin-left:25%;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add machine</button>
 
 
@@ -79,6 +82,10 @@ $machines = mysqli_query($conn,$query); ?>
       
     </div>
 </div>
+<?php
+
+
+?>
 
 
 

@@ -11,9 +11,13 @@ if (isset($_SESSION['name'])){
     }
     if ($_SESSION['role'] == "contributor"){
         include $_SERVER["DOCUMENT_ROOT"].'/project/module/dashboard/contributor.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/project/page/popups/editmachine.php';
+        
     }
     if ($_SESSION['role'] == "student"){
         include $_SERVER["DOCUMENT_ROOT"].'/project/module/dashboard/student.php';
+        include_once $_SERVER["DOCUMENT_ROOT"].'/project/page/machine_homepage.php';
+
     }
 }
 else{
@@ -80,4 +84,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 $query = "insert into machines_db(machine_name, machine_url, machine_disc, machine_logo_url) values('".$_POST["name"]."','".$_POST["repo_url"]."','http://localhost/project/uploads".$_FILES["logo"]["name"]."','".$_POST["disc"]."');";
 mysqli_query($conn, $query);
 }// SRIKAR test
+
+
 ?>

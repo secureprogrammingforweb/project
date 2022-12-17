@@ -61,10 +61,14 @@ if (mysqli_fetch_array($conn->query($query)) == NULL){
 		echo ("Wrong username or password");
 	}
 else {
-		session_start();
-		$_SESSION['name']="JACK";
-		header("Location: http://localhost/project/page/dashboard.php");
-		//var_dump($_SESSION['name']);
+	session_start();
+	$_SESSION['name']=$_POST["username"];
+	$query = 'select role from rbac where username="'.$_POST["username"].'";';
+	// GET role of user
+	$_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
+
+	header("Location: http://localhost/project/page/dashboard.php");
+
 	}
 }
 ?>

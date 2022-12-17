@@ -63,14 +63,52 @@ $query = " machines_db values('".$_POST["name"]."','".$_POST["repo_url"]."','htt
 // SRIKAR
 }
 
-$query = "select * from machines_db where machine_name='".$_GET['machine_name']."';";
-$machine = mysqli_fetch_array(mysqli_query($conn, $query));
+$query = "select * from machines_db where machine_name='"."dvwa"."';";
+//$machine = mysqli_fetch_array(mysqli_query($conn, $query));
+$machine = mysqli_fetch_array(mysqli_query($conn, $query))
+    print_r $machine; 
+    $machine = $machine[0];
 ?>
+<div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+              <?php
 
-<form action="/project/page/popups/updatekmachine.php" method="post" enctype="multipart/form-data">
-Name: <input type="text" name="name" value=<?php echo $machine["machine_name"];?>><br>
-Repo_URL: <input type="text" name="repo_url" <?php echo $machine['machine_url'];?>><br>
-Logo: <input type="file" name="logo" id="logo"><br>
-Disc: <input type="text" name="disc" <?php echo $machine['machine_disc'];?>><br>
-<input type="submit">
-</form>
+                
+                echo "<form action='/project/page/dashboard.php method='post'>".
+                 "Machine Name:"."<input type='text' class='form-control form-control-sm' placeholder='name' name='machinename' value='" . $machine["machine_name"]."'>".
+                "Repo URL:"."<input type='text' class='form-control form-control-sm' placeholder='repo url' name='repo_url' value='".$machine['machine_url']."'>".
+                "Desc:"."<textarea type='text' class='form-control form-control-sm' placeholder='desc' name='desc' value='".$machine['machine_disc']."'></textarea>".
+                "<input class='btn btn-dark' type='submit> </form>"; ?>
+            
+        </div>
+ 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<?php  ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

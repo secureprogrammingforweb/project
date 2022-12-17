@@ -88,7 +88,7 @@ else {
             "<td>" . "<div><img style='width:145px;'" . "src="."'https://cdn-icons-png.flaticon.com/512/59/59505.png'></img>"
             .$row["machine_name"].
             "</div></td>".
-            "<td>". "<a href=". "'/project/page/machine_homepage.php?name='".$row['machine_name'] . "'>".
+            "<td>". "<a href=". '"/project/page/machine_homepage.php?machinename="'.$row['machine_name'] . "'>".
                 "<button class='btn btn-dark' type=". "button". ">".
                 "<i></i> Start</button>".
                 "</a>". "</td>".   
