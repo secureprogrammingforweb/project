@@ -45,7 +45,7 @@ $machines = mysqli_query($conn,$query); ?>
   echo "<tr>".
     "<td>".$row["machine_name"]. "</td>".   
     "<td>".$row["user"]. "</td>".   
-    "<td>". "<button type='button' class='btn btn-dark' >"."Expand". "</button>". "</td>".   
+    "<td>". "<button type='button' class='btn btn-dark' >"."Stop". "</button>". "</td>".   
     "</tr>"; 
 }?>
 </table>

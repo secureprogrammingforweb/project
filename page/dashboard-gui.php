@@ -164,20 +164,20 @@ body.active .wrapper .section{
                 </li>
                 <li>
                     <a href="#">
-                        <span class="icon"><i class="fas fa-chart-line"></i></span>
-                        <span class="item">Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
                         <span class="icon"><i class="fas fa-user-shield"></i></span>
                         <span class="item">Admin</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/project/page/support.php">
                         <span class="icon"><i class="fas fa-cog"></i></span>
-                        <span class="item">Settings</span>
+                        <span class="item">Support</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/project/page/logout.php">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="item">Logout</span>
                     </a>
                 </li>
             </ul>

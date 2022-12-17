@@ -66,8 +66,8 @@ $query = " machines_db values('".$_POST["name"]."','".$_POST["repo_url"]."','htt
 $query = "select * from machines_db where machine_name='"."dvwa"."';";
 //$machine = mysqli_fetch_array(mysqli_query($conn, $query));
 $machine = mysqli_fetch_array(mysqli_query($conn, $query))
-    print_r $machine; 
-    $machine = $machine[0];
+    // print_r ($machine); 
+    // $machine = $machine[0];
 ?>
 <div class="modal fade" id="editModal" role="dialog">
     <div class="modal-dialog">
@@ -76,7 +76,7 @@ $machine = mysqli_fetch_array(mysqli_query($conn, $query))
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Edit Machine</h4>
         </div>
         <div class="modal-body">
               <?php
@@ -85,8 +85,8 @@ $machine = mysqli_fetch_array(mysqli_query($conn, $query))
                 echo "<form action='/project/page/dashboard.php method='post'>".
                  "Machine Name:"."<input type='text' class='form-control form-control-sm' placeholder='name' name='machinename' value='" . $machine["machine_name"]."'>".
                 "Repo URL:"."<input type='text' class='form-control form-control-sm' placeholder='repo url' name='repo_url' value='".$machine['machine_url']."'>".
-                "Desc:"."<textarea type='text' class='form-control form-control-sm' placeholder='desc' name='desc' value='".$machine['machine_disc']."'></textarea>".
-                "<input class='btn btn-dark' type='submit> </form>"; ?>
+                "Desc:"."<textarea type='text' class='form-control form-control-sm' placeholder='description' name='desc' value='".$machine['machine_disc']."'></textarea>".
+                "<input class='btn btn-dark' type='submit'> </form>"; ?>
             
         </div>
  

@@ -22,7 +22,12 @@ session_start();
 ?>
 <div class="grid-container">
 <?php
-$query = "select * from support where user='".$_SESSION['name']."';";
+if ($_SESSION["role"] == "student" || $_SESSION["role"] == "contributor"){
+    $query = "select * from support where user='".$_SESSION['name']."';";
+}
+if ($_SESSION["role"] == "admin"){
+    $query = "select * from support";
+}
 $result = mysqli_query($conn, $query);
 while($row = mysqli_fetch_array($result)) { ?>
     <div class="grid-item"><?php echo $row["question"]; ?></div>
