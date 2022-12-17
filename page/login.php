@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
                 <div class="form-outline form-white mb-4">
-
+                <input name="CSRF" type="hidden" value="<?php echo $_SESSION["CSRF"]?>" />
                   <input
 
                     name="password"
