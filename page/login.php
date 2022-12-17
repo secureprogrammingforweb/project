@@ -119,11 +119,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">
+                <button class="btn btn-outline-light btn-lg px-5" style="margin-bottom: 10px;" type="submit">
 
                   Login
 
                 </button>
+                <br>
+                <a class="btn btn-outline-light btn-lg px-5" href="/project/page/register.php">Register</a>
 
                 <?php
 

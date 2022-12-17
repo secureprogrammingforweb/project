@@ -144,7 +144,7 @@ body.active .wrapper .section{
         </div>
         <div class="sidebar">
             <div class="profile">
-                <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg" alt="profile_picture">
                 <?php
                         session_start();
                         echo "<h3>". $_SESSION["name"]. "</h3>";
