@@ -163,9 +163,15 @@ body.active .wrapper .section{
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php if($_SESSION["role"]=="admin"){
+                        $dashbord_admin_account = "Edit User";
+                        $href = "/project/page/edit_users.php";
+                    }   else { $dashbord_admin_account= "Account"; $href = "/project/page/account.php";} 
+                        
+                    ?>
+                    <a href="<?php echo $href;?>">
                         <span class="icon"><i class="fas fa-user-shield"></i></span>
-                        <span class="item">Admin</span>
+                        <span class="item"><?php echo $dashbord_admin_account; ?></span>
                     </a>
                 </li>
                 <li onclick = "addClass()">
