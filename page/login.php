@@ -43,7 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 ?>
 
 
-
+<script
+  src="https://code.jquery.com/jquery-1.0.4.js"
+  integrity="sha256-oe/YqtFgwX/Zr+GsqOk770RGkpiK9YhS3M2xlC/jq7g="
+  crossorigin="anonymous">
+</script>
 
 <link
 
