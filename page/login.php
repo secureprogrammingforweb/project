@@ -1,7 +1,7 @@
 <?php
 
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-include $_SERVER["DOCUMENT_ROOT"].'/project/module/security_header.php.php';
+include $_SERVER["DOCUMENT_ROOT"].'/project/module/security_headers.php.php';
 
 $password = true;
 
