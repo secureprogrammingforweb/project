@@ -8,6 +8,7 @@ Table
 BOX | Box | button | Box |
 [Add button] 
  */
+/*
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 $target_dir = "../../uploads/";
 echo $target_dir;
@@ -61,7 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $query = " machines_db values('".$_POST["name"]."','".$_POST["repo_url"]."','http://localhost/project/uploads".$_FILES["logo"]["name"]."','".$_POST["disc"]."');";
 // SRIKAR
-}
+
+}*/
 
 $query = "select * from machines_db where machine_name='"."dvwa"."';";
 //$machine = mysqli_fetch_array(mysqli_query($conn, $query));
@@ -82,7 +84,7 @@ $machine = mysqli_fetch_array(mysqli_query($conn, $query))
               <?php
 
                 
-                echo "<form action='/project/page/dashboard.php method='post'>".
+                echo "<form action='/project/page/popups/editmachine.php' method='post'>".
                  "Machine Name:"."<input type='text' class='form-control form-control-sm' placeholder='name' name='machinename' value='" . $machine["machine_name"]."'>".
                 "Repo URL:"."<input type='text' class='form-control form-control-sm' placeholder='repo url' name='repo_url' value='".$machine['machine_url']."'>".
                 "Desc:"."<textarea type='text' class='form-control form-control-sm' placeholder='description' name='desc' value='".$machine['machine_disc']."'></textarea>".
@@ -97,7 +99,16 @@ $machine = mysqli_fetch_array(mysqli_query($conn, $query))
       
     </div>
 </div>
-<?php  ?>
+
+<?php  
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    //include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
+    $query = "UPDATE machines_db SET machine_name = '". $_POST["machinename"]. "', machine_url='".$_POST["repo_url"]."', machine_disc='". $_POST["desc"]. "'". " WHERE machine_name = 'dvwa'";
+    mysqli_query($conn, $query);
+	header("Location: http://localhost/project/page/dashboard.php");
+
+}
+?>
 
 
 

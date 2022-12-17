@@ -1,4 +1,9 @@
+<?php
+include $_SERVER["DOCUMENT_ROOT"].'/project/page/dashboard-gui.php';
+?>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style>
 .grid-container {
   display: grid;
@@ -18,9 +23,8 @@
 
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-session_start();
 ?>
-<div class="grid-container">
+
 <?php
 if ($_SESSION["role"] == "student" || $_SESSION["role"] == "contributor"){
     $query = "select * from support where user='".$_SESSION['name']."';";
@@ -29,8 +33,26 @@ if ($_SESSION["role"] == "admin"){
     $query = "select * from support";
 }
 $result = mysqli_query($conn, $query);
-while($row = mysqli_fetch_array($result)) { ?>
-    <div class="grid-item"><?php echo $row["question"]; ?></div>
-    <div class="grid-item"><?php echo $row["answer"]; ?></div>
-    <div class="grid-item" id="<?php echo $row['id']; ?>"><button>Delete</button></div> 
-<?php } ?></div>
+echo "<table class='table table-striped table-hover' style='margin-left:25%;width:50%;'>";
+echo "<tr>". 
+     "<th> Question</th>".
+     "<th> Answer</th>".
+     "<th> Action</th>".
+     "</tr>";
+
+while($row = mysqli_fetch_array($result)) { 
+  echo "<tr>".
+    "<td>".$row["question"]. "</td>";
+    if ($_SESSION["role"] === "admin" && $row["answer"]=== "In review."){
+      echo "<td><textarea></textarea></td>";
+      echo "<td>". "<button value='submitquestion'   type='button' class='btn btn-dark' id='". $row['id']."'>"."Submit". "</button>". "</td>";
+
+    }
+    else{
+      echo "<td>".$row["answer"]. "</td>";
+    }
+    echo "<td>". "<button value='deletequestion'   type='button' class='btn btn-dark' id='". $row['id']."'>"."Delete". "</button>". "</td>";
+    echo "</tr>"; 
+}
+echo "</table>";
+?>

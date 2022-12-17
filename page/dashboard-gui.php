@@ -168,7 +168,7 @@ body.active .wrapper .section{
                         <span class="item">Admin</span>
                     </a>
                 </li>
-                <li>
+                <li onclick = "addClass()">
                     <a href="/project/page/support.php">
                         <span class="icon"><i class="fas fa-cog"></i></span>
                         <span class="item">Support</span>
