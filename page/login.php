@@ -1,7 +1,8 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
-include $_SERVER["DOCUMENT_ROOT"].'/project/module/sessionmgr.php';
-
+// include $_SERVER["DOCUMENT_ROOT"].'/project/module/sessionmgr.php';
+error_reporting(0);
+ini_set('display_errors', 0);
 # If GET - show login page
 if ($_SERVER['REQUEST_METHOD'] == "GET"){ ?>
 <link
