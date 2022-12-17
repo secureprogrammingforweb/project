@@ -127,12 +127,7 @@ body.active .wrapper .section{
 }
 
     </style>
-    <script>
-            function myFunction() {
-                var obj = document.getElementById("dashboard");
-                obj.click();
-            }
-    </script>
+
 </head>
 <body>
    
@@ -157,7 +152,7 @@ body.active .wrapper .section{
             </div>
             <ul>
                 <li>
-                    <a onload="myFunction()" id="dashboard" href="/project/page/dashboard.php" class="active">
+                    <a  id="dashboard" href="/project/page/dashboard.php" class=<?php if(basename($_SERVER['SCRIPT_NAME']) == 'dashboard.php'){echo 'active'; }else{echo '';}?>>
                         <span class="icon"><i class="fas fa-home"></i></span>
                         <span class="item">My Dashboard</span>
                     </a>
@@ -169,13 +164,14 @@ body.active .wrapper .section{
                     }   else { $dashbord_admin_account= "Account"; $href = "/project/page/account.php";} 
                         
                     ?>
-                    <a href="<?php echo $href;?>">
+                    <a href=<?php echo $href;?> class=<?php if(basename($_SERVER['SCRIPT_NAME']) == 'account.php'){echo 'active'; }else{echo '';}?>>
                         <span class="icon"><i class="fas fa-user-shield"></i></span>
-                        <span class="item"><?php echo $dashbord_admin_account; ?></span>
+                        <span class="item"><?php echo $dashbord_admin_account; 
+                        ?></span>
                     </a>
                 </li>
-                <li onclick = "addClass()">
-                    <a href="/project/page/support.php">
+                <li >
+                    <a href="/project/page/support.php" id="support" class=<?php if(basename($_SERVER['SCRIPT_NAME']) == 'support.php'){echo 'active'; }else{echo '';}?>>
                         <span class="icon"><i class="fas fa-cog"></i></span>
                         <span class="item">Support</span>
                     </a>

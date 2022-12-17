@@ -1,9 +1,28 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/conn.php';
 include $_SERVER["DOCUMENT_ROOT"].'/project/module/sessionmgr.php';
+$password = true;
 
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
+	$query = 'select * from auth where username="'.$_POST["username"].'" and password="'.$_POST["password"].'";';
+	if (mysqli_fetch_array($conn->query($query)) == NULL){
+			$password = false;
+			//echo ("Wrong username or password");
+		}
+	else {
+		session_start();
+		$_SESSION['name']=$_POST["username"];
+		$query = 'select role from rbac where username="'.$_POST["username"].'";';
+		// GET role of user
+		$_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
+	
+		header("Location: http://localhost/project/page/dashboard.php");
+	
+		}
+	}
+?>
 # If GET - show login page
-if ($_SERVER['REQUEST_METHOD'] == "GET"){ ?>
+
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -44,6 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){ ?>
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">
                   Login
                 </button>
+				<?php
+				if($password === false){
+					 echo "<h3>". "Wrong username or password"."</h3>";
+				}
+
+				?>
               </div>
             </form>
           </div>
@@ -52,23 +77,3 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){ ?>
     </div>
   </div>
 </section>
-<?php }
-
-# If POST process inputs
-if ($_SERVER['REQUEST_METHOD'] == "POST"){
-$query = 'select * from auth where username="'.$_POST["username"].'" and password="'.$_POST["password"].'";';
-if (mysqli_fetch_array($conn->query($query)) == NULL){
-		echo ("Wrong username or password");
-	}
-else {
-	session_start();
-	$_SESSION['name']=$_POST["username"];
-	$query = 'select role from rbac where username="'.$_POST["username"].'";';
-	// GET role of user
-	$_SESSION['role'] = mysqli_fetch_array($conn->query($query))["role"];
-
-	header("Location: http://localhost/project/page/dashboard.php");
-
-	}
-}
-?>
